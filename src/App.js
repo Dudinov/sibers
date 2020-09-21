@@ -20,7 +20,18 @@ const App = () => {
       newContacts[currentIndex] = contact
       localStorage.setItem('contacts', JSON.stringify(newContacts))
       setContacts(newContacts)
+    } else {
+      const newContacts = contacts
+
+      newContacts.push(contact)
+      localStorage.setItem('contacts', JSON.stringify(newContacts))
+      setContacts(newContacts)
     }
+  }
+  const deleteContact = (id) => {
+    const newContacts = contacts.filter(el => +el.id !== +id)
+    localStorage.setItem('contacts', JSON.stringify(newContacts))
+    setContacts(newContacts)
   }
 
   React.useEffect(() => {
@@ -75,7 +86,26 @@ const App = () => {
             )
           }}
         />
-        <IconButton onClick={() => {}}>
+        <IconButton onClick={() => {
+          let maxId = 0
+
+          contacts.forEach(el => {
+            if (+el.id > maxId) {
+              maxId = +el.id
+            }
+          })
+          setSelectedContact(
+            {
+              id: maxId + 1,
+              avatar: '',
+              name: '',
+              email: '',
+              phone: '',
+              username: ''
+            }
+          )
+        }}
+        >
           <PersonAddIcon />
         </IconButton>
       </header>
@@ -97,6 +127,7 @@ const App = () => {
                     key={el.username || `list-elem-${el.id}`}
                     contact={el}
                     setEditContact={setEditContact}
+                    deleteContact={deleteContact}
                   />
                 ))}
             </React.Fragment>

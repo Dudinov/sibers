@@ -8,6 +8,7 @@ body {
 }
 #root {
   overflow: hidden;
+  min-width: 300px;
 }
 .Contacts {
   max-width: 760px;
@@ -25,6 +26,8 @@ header {
   justify-content: space-between;
   max-width: 760px;
   margin: auto;
+  align-items: center;
+  padding: 10px 5px;
 }
 .ContactItem {
   display: flex;
@@ -47,8 +50,8 @@ header {
   justify-content: space-between;
 }
 .ContactItemMain--before {
-  width: 10%;
-  min-width: 90px;
+  /* width: 10%; */
+  width: 90px;
   display: flex;
 }
 .ContactItemMain--avatar {
@@ -59,7 +62,7 @@ header {
   background-color: #fafafa;
 }
 .ContactItemMain--info {
-  max-width: 80%;
+  width: calc(100% - 168px);
   display: flex;
   flex-direction: column;
 }
@@ -68,13 +71,19 @@ header {
   color: gray;
 }
 .ContactItemMain--after {
-  width: 10%;
+  /* width: 10%; */
+  width: 48px;
 }
 .ContactItem--menu {
   width: 100%;
   overflow: hidden;
   transition: max-height 0.3s;
-  padding-top: 10px;
+  padding: 10px 15px;
+}
+.ContactItem--actions button {
+  margin: 10px 0;
+  display: flex;
+  flex-direction: column;
 }
 .ContactItem--menu--hidden {
   max-height: 0px;

@@ -5,7 +5,8 @@ import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown'
 
 const ContactItem = ({
   contact,
-  setEditContact
+  setEditContact,
+  deleteContact
 }) => {
   const [isOpen, setOpen] = React.useState(false)
   const {
@@ -42,7 +43,10 @@ const ContactItem = ({
         </div>
       </div>
       <div className={`ContactItem--menu ${isOpen ? 'ContactItem--menu--active' : 'ContactItem--menu--hidden'}`}>
-        <Button variant='contained' onClick={() => setEditContact(contact)}>Edit</Button>
+        <div className='ContactItem--actions'>
+          <Button variant='contained' onClick={() => setEditContact(contact)}>Edit</Button>
+          <Button variant='contained' color='secondary' onClick={() => deleteContact(contact.id)}>Delete</Button>
+        </div>
         {phone ? <p>{`phone: ${phone}`}</p> : null}
         {email ? <p>{`email: ${email}`}</p> : null}
       </div>
