@@ -1,0 +1,125 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+#root {
+  overflow: hidden;
+}
+.Contacts {
+  max-width: 760px;
+  margin: auto;
+}
+h2 {
+  text-align: center;
+}
+.total {
+  text-align: center;
+  color: gray;
+}
+header {
+  display: flex;
+  justify-content: space-between;
+  max-width: 760px;
+  margin: auto;
+}
+.ContactItem {
+  display: flex;
+  width: 100%;
+  padding: 5px;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+.ContactItem:after {
+  content: "";
+  width: 80%;
+  height: 1px;
+  margin: 12px 10%;
+  background: gray;
+}
+.ContactItemMain {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  justify-content: space-between;
+}
+.ContactItemMain--before {
+  width: 10%;
+  min-width: 90px;
+  display: flex;
+}
+.ContactItemMain--avatar {
+  height: 80px;
+  width: 80px;
+  border-radius: 50%;
+  margin: auto;
+  background-color: #fafafa;
+}
+.ContactItemMain--info {
+  max-width: 80%;
+  display: flex;
+  flex-direction: column;
+}
+
+.ContactItemMain--username {
+  color: gray;
+}
+.ContactItemMain--after {
+  width: 10%;
+}
+.ContactItem--menu {
+  width: 100%;
+  overflow: hidden;
+  transition: max-height 0.3s;
+  padding-top: 10px;
+}
+.ContactItem--menu--hidden {
+  max-height: 0px;
+}
+.ContactItem--menu--active {
+  max-height: 500px;
+}
+.modalWrapper {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.wrapperBackground {
+  position: absolute;
+  background: rgba(118, 118, 118, 0.5);
+  width: 100vw;
+  height: 100vh;
+}
+.editModal {
+  border: 2px solid #000;
+  border-radius: 10px;
+  padding: 15px;
+  position: relative;
+  width: 90vw;
+  max-width: 600px;
+  height: 90vh;
+  max-height: 600px;
+  background: #fafafa;
+}
+.editModal--form {
+  height: 100%;
+}
+.editModal--form .MuiFormGroup-root {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+.editModal--form label {
+  justify-content: flex-end;
+}
