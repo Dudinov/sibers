@@ -122,7 +122,7 @@ const App = () => {
                 .sort((a, b) =>
                   a.name > b.name ? 1 : a.name < b.name ? -1 : 0
                 )
-                .map((el, index) => (
+                .map((el) => (
                   <ContactItem
                     key={el.username || `list-elem-${el.id}`}
                     contact={el}

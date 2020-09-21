@@ -7,6 +7,13 @@ import {
   FormControlLabel,
   FormGroup
 } from '@material-ui/core'
+import { yupResolver } from '@hookform/resolvers'
+import * as yup from 'yup'
+
+const schema = yup.object().shape({
+  phone: yup.string().required(),
+  name: yup.string().required()
+})
 
 const EditContact = ({ contact, onClose, updateContact }) => {
   const {
@@ -21,7 +28,9 @@ const EditContact = ({ contact, onClose, updateContact }) => {
     username
   } = contact
   const [favorite, setFavorite] = React.useState(contact.favorite)
-  const { register, handleSubmit, control } = useForm()
+  const { register, handleSubmit, control, errors } = useForm({
+    resolver: yupResolver(schema)
+  })
   const onSubmit = (data) => {
     updateContact({
       ...data,
@@ -62,6 +71,8 @@ const EditContact = ({ contact, onClose, updateContact }) => {
               as={TextField}
               label='Name:'
               name='name'
+              error={!!errors.name}
+              helperText={errors.name ? errors.name.message : ''}
               defaultValue={name}
               control={control}
             />
@@ -69,6 +80,8 @@ const EditContact = ({ contact, onClose, updateContact }) => {
               as={TextField}
               label='Phone:'
               name='phone'
+              error={!!errors.phone}
+              helperText={errors.phone ? errors.phone.message : ''}
               defaultValue={phone}
               control={control}
             />
